@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 function Login() {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-
+    // Multiple Inputs with Multiple onChange Handler in React
 const handleChange=(e)=>{
     setPassword(e.target.value)
 }
