@@ -1,3 +1,18 @@
 {
-  "products": []
+  "products": [
+    {
+      "productName": "coka",
+      "price": "10",
+      "quantity": "12",
+      "description": "dzlpzd\n",
+      "id": 1
+    },
+    {
+      "productName": "fanta",
+      "price": "10",
+      "quantity": "12",
+      "description": "6dzqjguyg",
+      "id": 2
+    }
+  ]
 }

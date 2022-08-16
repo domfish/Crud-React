@@ -3,30 +3,30 @@ import { Link } from 'react-router-dom';
 import productService from '../services/ProductService';
 
 function Dashboard() {
-    const [products,setProducts] = useState([])
-    const getAllProducts= () =>{
+    const [products, setProducts] = useState([])
+    const getAllProducts = () => {
         productService.getAllProducts()
-        .then(response=>{
-            console.log(response.data);
-            setProducts(response.data);
-        })
-        .catch(error=>{
-            console.log(error);
-        })
+            .then(response => {
+                // console.log(response.data);
+                setProducts(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
-    useEffect(()=>{
+    useEffect(() => {
         getAllProducts()
-    },[])
-    
+    }, [])
+
     const removeData = (id) => {
         productService.deleteProductById(id)
-        .then(response=>{
-            // console.log(response);
-            getAllProducts()
-        })
-        .catch(error=>{
-            console.log(error);
-        })
+            .then(response => {
+                // console.log(response);
+                getAllProducts()
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     return (
         <div className='row'>
@@ -44,19 +44,20 @@ function Dashboard() {
                         </tr>
                     </thead>
                     <tbody>
-                       {products.map((p,i)=>{
-                        return(
-                            <tr key={i}>
-                            <th scope="row">{p.id}</th>
-                            <td>{p.productName}</td>
-                            <td>{p.price}</td>
-                            <td>{p.quantity}</td>
-                            <td>
-                                <Link className='btn btn-success 'to={'/upDate/'+p.id}>Update</Link> 
-                                <Link className='btn btn-danger' onClick={(e)=>removeData(p.id)}>Remove</Link></td>
-                        </tr>
-                        )
-                       })}
+                        {products.map((p, i) => {
+                            return (
+                                <tr key={i}>
+                                    <th scope="row">{p.id}</th>
+                                    <td>{p.productName}</td>
+                                    <td>{p.price}</td>
+                                    <td>{p.quantity}</td>
+                                    <td>
+                                        <Link className='btn btn-success me-1' to={'/upDate/' + p.id}>Update</Link>
+                                        <button className='btn btn-danger' onClick={(e) => removeData(p.id)}>Remove</button>
+                                    </td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>
